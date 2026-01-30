@@ -1,4 +1,4 @@
-name: built-and-lint
+name: build-and-lint
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
     branches: [main]
 
 jobs:
-  built-and-lint:
+  build-and-lint:
     runs-on: ubuntu-latest
 
     steps:
