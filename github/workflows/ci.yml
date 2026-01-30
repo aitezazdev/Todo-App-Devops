@@ -2,11 +2,9 @@ name: built-and-lint
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
   pull_request:
-    branches: # branches: [main]
-      - main
+    branches: [main]
 
 jobs:
   built-and-lint:
@@ -36,7 +34,7 @@ jobs:
       - name: Lint frontend code
         working-directory: ./frontend
         run: npm run lint -- --max-warnings=0
-
+ 
       - name: Build backend image
         run: docker build -t backend ./backend
 
