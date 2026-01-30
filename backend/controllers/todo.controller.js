@@ -1,6 +1,6 @@
-import mongoose from "mongoose";
-import Todo from "../models/todo.model.js";
-import { errorHandler } from "../utils/errorHandler.js";
+import mongoose from 'mongoose';
+import Todo from '../models/todo.model.js';
+import { errorHandler } from '../utils/errorHandler.js';
 
 // all todos
 const getAllTodos = async (req, res) => {
@@ -25,7 +25,7 @@ const createTodo = async (req, res) => {
     if (!todoText) {
       return res.status(400).json({
         success: false,
-        error: "plz enter somthing to create a todo",
+        error: 'plz enter somthing to create a todo',
       });
     }
 
@@ -36,7 +36,7 @@ const createTodo = async (req, res) => {
 
     return res.status(201).json({
       success: true,
-      message: "todo created successfully",
+      message: 'todo created successfully',
       data: createdTodo,
     });
   } catch (error) {
@@ -51,7 +51,7 @@ const deleteTodo = async (req, res) => {
     if (!mongoose.Types.ObjectId.isValid(id)) {
       return res.status(400).json({
         success: false,
-        error: "Invalid todo ID format",
+        error: 'Invalid todo ID format',
       });
     }
 
@@ -60,13 +60,13 @@ const deleteTodo = async (req, res) => {
     if (!deleteTodo) {
       return res.status(404).json({
         success: false,
-        error: "todo not found",
+        error: 'todo not found',
       });
     }
 
     return res.status(200).json({
       success: true,
-      message: "todo deleted successfully",
+      message: 'todo deleted successfully',
       data: deleteTodo,
     });
   } catch (error) {
@@ -83,7 +83,7 @@ const updateTodo = async (req, res) => {
     if (!mongoose.Types.ObjectId.isValid(id)) {
       return res.status(400).json({
         success: false,
-        error: "Invalid todo ID format",
+        error: 'Invalid todo ID format',
       });
     }
 
@@ -91,14 +91,14 @@ const updateTodo = async (req, res) => {
     if (!oldTodo) {
       return res.status(404).json({
         success: false,
-        error: "Todo not found",
+        error: 'Todo not found',
       });
     }
 
     if (!todoText) {
       return res.status(400).json({
         success: false,
-        error: "naming conflict or updated todo is empty",
+        error: 'naming conflict or updated todo is empty',
       });
     }
 
@@ -108,19 +108,19 @@ const updateTodo = async (req, res) => {
         todoText,
         completed: completed ?? oldTodo.completed,
       },
-      { new: true }
+      { new: true },
     );
 
     if (!updatedTodo) {
       return res.status(404).json({
         success: false,
-        error: "todo not found",
+        error: 'todo not found',
       });
     }
 
     return res.status(200).json({
       success: true,
-      message: "todo updated successfully",
+      message: 'todo updated successfully',
       oldData: oldTodo,
       newData: updatedTodo,
     });

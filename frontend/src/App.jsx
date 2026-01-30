@@ -1,13 +1,13 @@
-import { useState, useEffect } from "react";
-import { getTodos, createTodo, updateTodo, deleteTodo } from "./api";
-import "./index.css";
+import { useState, useEffect } from 'react';
+import { getTodos, createTodo, updateTodo, deleteTodo } from './api';
+import './index.css';
 
 function App() {
   const [todos, setTodos] = useState([]);
-  const [newTodoText, setNewTodoText] = useState("");
+  const [newTodoText, setNewTodoText] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [editingId, setEditingId] = useState(null);
-  const [editText, setEditText] = useState("");
+  const [editText, setEditText] = useState('');
 
   // Fetch todos on load
   useEffect(() => {
@@ -17,7 +17,7 @@ function App() {
         const result = await getTodos();
         setTodos(result.data);
       } catch (error) {
-        console.error("Failed to load todos", error);
+        console.error('Failed to load todos', error);
       } finally {
         setIsLoading(false);
       }
@@ -34,9 +34,9 @@ function App() {
     try {
       const result = await createTodo(newTodoText);
       setTodos([...todos, result.data]);
-      setNewTodoText("");
+      setNewTodoText('');
     } catch (error) {
-      console.error("Failed to add todo", error);
+      console.error('Failed to add todo', error);
     }
   }
 
@@ -52,14 +52,10 @@ function App() {
 
     try {
       await updateTodo(todo._id, editText, todo.completed);
-      setTodos(
-        todos.map((t) =>
-          t._id === todo._id ? { ...t, todoText: editText } : t
-        )
-      );
+      setTodos(todos.map((t) => (t._id === todo._id ? { ...t, todoText: editText } : t)));
       setEditingId(null);
     } catch (error) {
-      console.error("Failed to update todo", error);
+      console.error('Failed to update todo', error);
     }
   }
 
@@ -72,13 +68,9 @@ function App() {
   async function handleToggleComplete(todo) {
     try {
       await updateTodo(todo._id, todo.todoText, !todo.completed);
-      setTodos(
-        todos.map((t) =>
-          t._id === todo._id ? { ...t, completed: !t.completed } : t
-        )
-      );
+      setTodos(todos.map((t) => (t._id === todo._id ? { ...t, completed: !t.completed } : t)));
     } catch (error) {
-      console.error("Failed to update todo", error);
+      console.error('Failed to update todo', error);
     }
   }
 
@@ -88,7 +80,7 @@ function App() {
       await deleteTodo(id);
       setTodos(todos.filter((todo) => todo._id !== id));
     } catch (error) {
-      console.error("Failed to delete todo", error);
+      console.error('Failed to delete todo', error);
     }
   }
 
@@ -108,7 +100,8 @@ function App() {
           />
           <button
             type="submit"
-            className="bg-blue-500 text-white px-4 py-2 rounded-r hover:bg-blue-600">
+            className="bg-blue-500 text-white px-4 py-2 rounded-r hover:bg-blue-600"
+          >
             Add
           </button>
         </div>
@@ -134,12 +127,14 @@ function App() {
                   />
                   <button
                     onClick={() => handleSaveEdit(todo)}
-                    className="bg-green-500 text-white px-2 py-1 rounded mr-1 text-sm hover:bg-green-600">
+                    className="bg-green-500 text-white px-2 py-1 rounded mr-1 text-sm hover:bg-green-600"
+                  >
                     Save
                   </button>
                   <button
                     onClick={handleCancelEdit}
-                    className="bg-gray-500 text-white px-2 py-1 rounded text-sm hover:bg-gray-600">
+                    className="bg-gray-500 text-white px-2 py-1 rounded text-sm hover:bg-gray-600"
+                  >
                     Cancel
                   </button>
                 </div>
@@ -152,22 +147,21 @@ function App() {
                       onChange={() => handleToggleComplete(todo)}
                       className="mr-2"
                     />
-                    <span
-                      className={
-                        todo.completed ? "line-through text-gray-500" : ""
-                      }>
+                    <span className={todo.completed ? 'line-through text-gray-500' : ''}>
                       {todo.todoText}
                     </span>
                   </div>
                   <div>
                     <button
                       onClick={() => handleStartEdit(todo)}
-                      className="text-blue-500 hover:text-blue-700 mr-3">
+                      className="text-blue-500 hover:text-blue-700 mr-3"
+                    >
                       Edit
                     </button>
                     <button
                       onClick={() => handleDeleteTodo(todo._id)}
-                      className="text-red-500 hover:text-red-700">
+                      className="text-red-500 hover:text-red-700"
+                    >
                       Delete
                     </button>
                   </div>
