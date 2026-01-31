@@ -1,1 +1,1 @@
-# Devops-CI-Mern-App
+I set up DevOps and CI/CD using GitHub Actions. I use feature branches and pull requests to test and merge code automatically. The workflows build Docker images, run tests, and deploy updates so everything stays up-to-date.

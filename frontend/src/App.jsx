@@ -9,7 +9,6 @@ function App() {
   const [editingId, setEditingId] = useState(null);
   const [editText, setEditText] = useState('');
 
-  // Fetch todos on load
   useEffect(() => {
     async function loadTodos() {
       try {
@@ -26,7 +25,6 @@ function App() {
     loadTodos();
   }, []);
 
-  // Add a new todo
   async function handleAddTodo(e) {
     e.preventDefault();
     if (!newTodoText.trim()) return;
@@ -40,13 +38,11 @@ function App() {
     }
   }
 
-  // Start editing a todo
   function handleStartEdit(todo) {
     setEditingId(todo._id);
     setEditText(todo.todoText);
   }
 
-  // Save edited todo
   async function handleSaveEdit(todo) {
     if (!editText.trim()) return;
 
@@ -59,12 +55,10 @@ function App() {
     }
   }
 
-  // Cancel editing
   function handleCancelEdit() {
     setEditingId(null);
   }
 
-  // Toggle completion status
   async function handleToggleComplete(todo) {
     try {
       await updateTodo(todo._id, todo.todoText, !todo.completed);
@@ -74,7 +68,6 @@ function App() {
     }
   }
 
-  // Delete a todo
   async function handleDeleteTodo(id) {
     try {
       await deleteTodo(id);
@@ -88,7 +81,6 @@ function App() {
     <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-lg shadow-lg">
       <h1 className="text-2xl font-bold text-center mb-6">Todo App</h1>
 
-      {/* Add Todo Form */}
       <form onSubmit={handleAddTodo} className="mb-6">
         <div className="flex">
           <input
@@ -107,7 +99,6 @@ function App() {
         </div>
       </form>
 
-      {/* Todo List */}
       {isLoading ? (
         <p className="text-center">Loading...</p>
       ) : todos.length === 0 ? (
