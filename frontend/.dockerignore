@@ -1,0 +1,36 @@
+# Node modules (don't copy local dependencies, let Docker install them)
+node_modules
+npm-debug.log
+yarn-error.log
+
+# Python cache and virtual environments
+__pycache__
+*.pyc
+venv/
+env/
+*.pyo
+
+# Logs
+*.log
+
+# Git
+.git
+.gitignore
+
+# Docker files themselves
+Dockerfile
+docker-compose.yml
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Secrets / environment files
+.env
+.env.local
+.env.*.local
+
+# Build artifacts
+dist/
+build/
+*.bak
