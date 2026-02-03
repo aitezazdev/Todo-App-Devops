@@ -145,7 +145,7 @@ function App() {
                   <div>
                     <button
                       onClick={() => handleStartEdit(todo)}
-                      className="text-blue-500 hover:text-blue-700 mr-3"
+                      className="text-emerald-500 hover:text-emerald-600 mr-3"
                     >
                       Edit
                     </button>
