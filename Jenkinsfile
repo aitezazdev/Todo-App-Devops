@@ -15,7 +15,7 @@ pipeline {
       }
     }
 
-    stage('Prepare .env') {
+    stage('Prepare .env')   {
       steps {
         sh """
             mkdir -p backend
@@ -43,7 +43,7 @@ pipeline {
       steps {
         sh '''
           echo "Starting MERN app with docker compose ..."
-          docker compose up -d --build
+          docker-compose up -d --build
           
           echo "Showing running containers"
           docker ps
