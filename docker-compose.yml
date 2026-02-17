@@ -1,18 +1,22 @@
 services:
   backend:
     build: ./backend
+    image: mern-backend:jenkins
     container_name: backend
     restart: always
     env_file:
       - ./backend/.env
     ports:
       - "5000:5000"
+    depends_on:
+      - mongodb
 
   frontend:
     build:
       context: ./frontend
       args:
-        VITE_API_URL: "http://3.26.192.67:5000/api"
+        VITE_API_URL: "http://localhost:5000/api"
+    image: mern-frontend:jenkins
     container_name: frontend
     restart: always
     ports:
