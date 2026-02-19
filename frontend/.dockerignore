@@ -26,9 +26,9 @@ docker-compose.yml
 Thumbs.db
 
 # Secrets / environment files
-.env
-.env.local
-.env.*.local
+# .env
+# .env.local
+# .env.*.local
 
 # Build artifacts
 dist/
