@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+  namespace: todo-app
+data:
+  MONGO_HOST: mongo
+  FRONTEND_URL: http://frontend:5000
